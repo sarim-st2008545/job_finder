@@ -1,0 +1,66 @@
+# Default project settings. Overridable via .env where applicable.
+# All paths are relative to the project root.
+
+paths:
+  data_dir: data
+  raw_jobs_dir: data/raw_jobs
+  applications_dir: data/applications
+  companies_dir: data/companies
+  vector_store_dir: data/vector_store
+  reports_dir: data/reports
+  logs_dir: logs
+  db_path: data/app.db
+  profile_path: profile/profile.yaml
+  prompts_dir: prompts
+
+# Job-Scanner Agent
+scanner:
+  # Each source has its own block. Disabled by default unless configured.
+  # See jobfinder/sources/* for the exact options each accepts.
+  sources:
+    - name: remoteok
+      enabled: true
+      tags: [python, ai, ml, backend]
+    - name: rss
+      enabled: false
+      feeds:
+        # Examples – plug in your own:
+        # - https://weworkremotely.com/categories/remote-programming-jobs.rss
+        # - https://stackoverflow.com/jobs/feed
+        []
+    - name: linkedin_playwright
+      enabled: false
+      keywords: ["machine learning engineer", "AI engineer"]
+      locations: ["Remote", "United States"]
+      max_pages: 2
+  # Hard limits to keep prototype runs cheap
+  max_jobs_per_run: 50
+  min_age_hours_before_rescan: 24
+
+# Match & Draft Agent
+matcher:
+  # Report-first: score jobs and write match_score.json only. Set true when you
+  # want local cover/resume draft files under data/applications/<job_id>/.
+  generate_drafts: false
+  # Weight for keyword overlap vs LLM-judged fit (0..1 each, summed to 1.0)
+  weight_keyword: 0.4
+  weight_llm: 0.6
+  # Skip LLM scoring for jobs below this keyword floor
+  min_keyword_score: 0.05
+  cover_variants: 3
+  resume_bullet_edits: 6
+  require_manual_review: true
+
+# Company-R&D Agent
+company_research:
+  max_news_items: 5
+  max_pages_per_company: 8
+  user_agent_rotation: false
+
+# Filters applied to all sources after fetch
+filters:
+  must_include_any: []           # ["python", "ml"]
+  must_exclude_any: ["security clearance required"]
+  locations_allow:  []           # ["Remote", "US", "Karachi"]
+  seniority_allow:  []           # ["Senior", "Mid", "Entry"]
+  remote_only: false

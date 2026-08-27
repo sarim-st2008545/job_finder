@@ -1,0 +1,36 @@
+# Core
+typer[all]>=0.12.0
+rich>=13.7.0
+pydantic>=2.6.0
+PyYAML>=6.0.1
+python-dotenv>=1.0.1
+python-slugify>=8.0.4
+tenacity>=8.2.3
+
+# HTTP / Scraping
+httpx>=0.27.0
+beautifulsoup4>=4.12.3
+lxml>=5.2.0
+feedparser>=6.0.11
+playwright>=1.44.0
+readability-lxml>=0.8.1
+trafilatura>=1.10.0
+
+# Storage / Vector / Embeddings
+sqlalchemy>=2.0.30
+chromadb>=0.5.0
+sentence-transformers>=2.7.0
+
+# LLM providers (all optional at runtime; only what you use is required)
+openai>=1.30.0
+anthropic>=0.28.0
+ollama>=0.2.0
+
+# Scheduling
+APScheduler>=3.10.4
+
+# Misc
+tldextract>=5.1.2
+email-validator>=2.1.1
+dnspython>=2.6.1
+jinja2>=3.1.4

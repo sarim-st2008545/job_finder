@@ -1,0 +1,93 @@
+# Canonical profile. Copy to `profile/profile.yaml` and fill in.
+# This file is the single source of truth for the Match & Draft agent.
+
+basics:
+  name: "Your Name"
+  headline: "Senior ML Engineer | Agentic Systems | Python"
+  email: "you@example.com"
+  phone: "+92-300-1234567"
+  location: "Karachi, Pakistan"
+  remote_ok: true
+  links:
+    linkedin: "https://www.linkedin.com/in/yourhandle"
+    github: "https://github.com/yourhandle"
+    website: ""
+
+# Target roles drive scanner keywords and match scoring.
+targets:
+  titles:
+    - "Machine Learning Engineer"
+    - "AI Engineer"
+    - "Senior Backend Engineer"
+    - "Applied Scientist"
+  seniority: ["Senior", "Mid"]
+  comp_band_usd:
+    min: 90000
+    target: 130000
+  work_modes: ["remote", "hybrid"]
+  locations: ["Remote", "US", "EU", "Pakistan"]
+
+skills:
+  primary:
+    - Python
+    - PyTorch
+    - LLM agents
+    - RAG / vector search
+    - LangChain
+    - FastAPI
+    - PostgreSQL
+  secondary:
+    - Docker
+    - Kubernetes
+    - AWS
+    - GCP
+    - Playwright
+
+experience:
+  - company: "Acme AI"
+    role: "Senior ML Engineer"
+    start: "2023-02"
+    end: "present"
+    location: "Remote"
+    bullets:
+      - "Built an agentic document-QA system serving 50k req/day with 30% latency reduction."
+      - "Led RAG pipeline redesign on FAISS + reranker; raised top-1 accuracy from 64% -> 81%."
+      - "Mentored 3 juniors; introduced eval harness used across 4 product teams."
+  - company: "FooCorp"
+    role: "ML Engineer"
+    start: "2020-08"
+    end: "2023-01"
+    bullets:
+      - "Shipped 6 production models (XGBoost, fine-tuned BERT) used by ~120 internal users."
+      - "Designed feature store on Postgres + Redis cutting training-serving skew incidents to ~0."
+
+education:
+  - school: "Some University"
+    degree: "BSc Computer Science"
+    year: 2020
+
+# Pre-canned highlights the matcher can pull from when crafting tailored bullets.
+achievements:
+  - "Led migration from monolith to event-driven microservices (Kafka)."
+  - "Open-source maintainer of <project> with 1.2k stars."
+
+# Resume variants. Each is a curated subset of the bullets above. The matcher
+# picks one variant per job and then tailors its bullets.
+variants:
+  senior:
+    summary: "Senior ML engineer with 6+ years building production agentic systems."
+    pick_experience: ["Acme AI", "FooCorp"]
+    emphasis: ["leadership", "scale", "rag", "agents"]
+  mid:
+    summary: "ML engineer focused on shipping reliable RAG and agentic features."
+    pick_experience: ["Acme AI", "FooCorp"]
+    emphasis: ["python", "pytorch", "production"]
+  entry:
+    summary: "Builder passionate about ML systems and agentic workflows."
+    pick_experience: ["FooCorp"]
+    emphasis: ["python", "fundamentals"]
+
+# Free-text style guide handed to the LLM when writing cover drafts.
+voice:
+  cover_letter: "Direct, warm, builder voice. No corporate filler. Max 180 words."
+  resume_bullet: "Action verb + concrete metric + tech. <=2 lines each."

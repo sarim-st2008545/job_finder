@@ -1,0 +1,36 @@
+# Secrets and local state
+.env
+*.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local data, never commit
+data/app.db
+data/app.db-journal
+data/raw_jobs/
+data/applications/
+data/companies/
+data/reports/
+
+# Profile (contains personal data)
+profile/profile.json
+profile/profile.yaml
+profile/profile.pdf
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
